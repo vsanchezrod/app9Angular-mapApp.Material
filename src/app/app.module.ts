@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
 
 // Angular Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppComponent } from './app.component';
+// Se importa el módulo nuevo creado donde se encuentra todo lo relacionado con Angular Material
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -12,8 +14,9 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
-  ],
+    BrowserAnimationsModule,
+    MaterialModule
+   ],
   providers: [],
   bootstrap: [AppComponent]
 })
