@@ -8,7 +8,7 @@
 
             <!-- Marcador de google Maps-->
             <!-- Se utiliza ngFor para poner tantos marcadores como haya en el array de Marcadores-->
-            <agm-marker *ngFor="let marcador of marcadores" [latitude]="marcador.lat" [longitude]="marcador.lng">
+            <agm-marker *ngFor="let marcador of marcadores; let i = index" [latitude]="marcador.lat" [longitude]="marcador.lng">
 
                 <agm-info-window>
 
@@ -16,7 +16,7 @@
                     <p>{{ marcador.descripcion }}</p>
 
                     <button mat-raised-button color="primary">Editar</button>
-                    <button mat-raised-button color="warn">Borrar</button>
+                    <button (click)="borrarMarcador(i)" mat-raised-button color="warn">Borrar</button>
 
                 </agm-info-window>
 

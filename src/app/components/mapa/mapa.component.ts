@@ -22,17 +22,18 @@ export class MapaComponent implements OnInit {
 
   constructor() {
 
-    // Marcador por defecto del mapa
-    const nuevoMarcador = new Marcador(51.67, 7.80);
+    if (localStorage.getItem ('marcadores')) {
 
-    // Se añade al array de marcadores
-    this.marcadores.push(nuevoMarcador);
+      // Parseamos a JSON todos los strings
+      this.marcadores = JSON.parse(localStorage.getItem ('marcadores'));
+    }
 
   }
 
   ngOnInit() {
   }
 
+  // Método para agregar marcadores
   agregarMarcador(evento) {
 
     // El evento hace referencia a las coordenadas donde se hizo click en el mapa (longitud, latitud);
@@ -45,12 +46,26 @@ export class MapaComponent implements OnInit {
 
     // Se añade al array de marcadores
     this.marcadores.push(nuevoMarcador);
-
-
-
+    this.guardarMarcadores();
 
   }
 
+  // Método para guardar los marcadores en localStorage.
+  guardarMarcadores() {
+
+    // LocalStorage solo permite guardar STRINGs
+    localStorage.setItem('marcadores', JSON.stringify(this.marcadores));
+
+  }
+
+  borrarMarcador(i: number) {
+    
+    // Splice para borrar
+    this.marcadores.splice(i, 1);
+
+    // Para borrar del local storage llamamos a guardarMarcadores();
+    this.guardarMarcadores();
+  }
 
 
 }
