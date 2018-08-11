@@ -2,6 +2,27 @@
     <mat-card-title>MAPA</mat-card-title>
 
     <mat-card-content>
-        CONTENIDO
+
+        <!-- Sacado de la documentación de Angular Google Maps. Se utiliza el evento mapClick, que llama a la función agregarMarcador q recibe un evento-->
+        <agm-map (mapClick)="agregarMarcador($event)" [latitude]="lat" [longitude]="lng" [zoom]="15">
+
+            <!-- Marcador de google Maps-->
+            <!-- Se utiliza ngFor para poner tantos marcadores como haya en el array de Marcadores-->
+            <agm-marker *ngFor="let marcador of marcadores" [latitude]="marcador.lat" [longitude]="marcador.lng">
+
+                <agm-info-window>
+
+                    <strong>{{ marcador.titulo }}</strong>
+                    <p>{{ marcador.descripcion }}</p>
+
+                    <button mat-raised-button color="primary">Editar</button>
+                    <button mat-raised-button color="warn">Borrar</button>
+
+                </agm-info-window>
+
+            </agm-marker>
+
+        </agm-map>
+
     </mat-card-content>
 </mat-card>

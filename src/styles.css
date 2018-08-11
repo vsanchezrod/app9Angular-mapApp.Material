@@ -13,3 +13,8 @@ body {
     margin-top: 5px;
     padding: 10px;
 }
+
+strong,
+p {
+    color: black;
+}
